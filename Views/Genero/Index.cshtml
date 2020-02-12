@@ -1,0 +1,36 @@
+@model IEnumerable<Casadeshow.Models.Genero>
+
+@{
+    ViewData["Title"] = "Gêneros";
+}
+
+<div style="text-align:center;border:3px solid green">
+    <h1>Gêneros cadastrados</h1>
+</div>
+
+<p>
+    <a asp-action="Create">Criar novo gênero</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.GeneroId">Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.GeneroId">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

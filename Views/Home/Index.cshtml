@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Casadeshow.Models.Evento>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div style="text-align:center;border:3px solid green">
+    <h1>Bem Vindos</h1>
+</div>
+
+<table class="table">
+    <thead>
+
+        <tbody>
+            <br>
+@foreach (var item in Model) 
+{
+    <div class="contaner row" style="border:3px solid blue">
+
+        <div class="col-sm-4 text-center">
+            xxxxx
+        </div>
+
+        <div class="col-sm-4 text-center">
+            <br>
+                    <h5>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </h5>
+                <br>
+                    @Html.DisplayFor(modelItem => item.Capacidade)
+                <br>
+                    @Html.DisplayFor(modelItem => item.PrecoIngresso)
+                <br>
+                    @Html.DisplayFor(modelItem => item.Data)
+                <br>
+                    @Html.DisplayFor(modelItem => item.QtdIngresso)
+                <br>
+                    @Html.DisplayFor(modelItem => item.CasaDeShow.Nome)
+                <br>
+                    @Html.DisplayFor(modelItem => item.Genero.Nome)
+                <br>
+                <br>
+            </div>
+
+                <div class="col-sm-4 text-center">
+                    <p></p>
+                </div>
+
+            </div>
+            <br>
+}
+    </tbody>
+        
+    </thead>
+</table>
+
+
+

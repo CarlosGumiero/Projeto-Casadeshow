@@ -1,0 +1,58 @@
+@model Casadeshow.DTO.EventoDTO
+
+@{
+    ViewData["Title"] = "Editar Evento";
+}
+
+<h3>Editar</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EventoId" />
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Capacidade" class="control-label"></label>
+                <input asp-for="Capacidade" class="form-control" />
+                <span asp-validation-for="Capacidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecoIngresso" class="control-label">Preço do Ingresso</label>
+                <input asp-for="PrecoIngresso" class="form-control" />
+                <span asp-validation-for="PrecoIngresso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QtdIngresso" class="control-label">Quantidade de Ingressos</label>
+                <input asp-for="QtdIngresso" class="form-control" />
+                <span asp-validation-for="QtdIngresso" class="text-danger"></span>
+            </div>
+            <label asp-for="CasaDeShow" class="control-label">Casa de Show</label>
+            <div class="form-group">
+                <select class="form-control" asp-for="CasaDeShow" asp-items='@(new SelectList(@ViewBag.Casadeshow, "CasaDeShowId", "Nome"))'></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genero" class="control-label">Gênero</label>
+                <select class="form-control" asp-for="Genero" asp-items='@(new SelectList(@ViewBag.Genero, "GeneroId", "Nome"))'></select>
+            </div>
+            <div class="form-group">
+                <button type="submit" value="Save" class="btn btn-primary">Editar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
