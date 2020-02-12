@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Casadeshow.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200210123644_AddCasaDeShow")]
+    [Migration("20200212170318_AddCasaDeShow")]
     partial class AddCasaDeShow
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,8 +100,8 @@ namespace Casadeshow.Migrations
                     b.Property<int?>("EventoId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("HistoricoId");
 
@@ -112,30 +112,23 @@ namespace Casadeshow.Migrations
                     b.ToTable("Historico");
                 });
 
-            modelBuilder.Entity("Casadeshow.Models.User", b =>
+            modelBuilder.Entity("Casadeshow.Models.Testee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ImajId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<bool>("Admin")
-                        .HasColumnType("tinyint(1)");
+                    b.Property<byte[]>("Foto")
+                        .IsRequired()
+                        .HasColumnType("longblob");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.HasKey("ImajId");
 
-                    b.Property<bool>("Older")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Usuario");
+                    b.ToTable("Testee");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -351,7 +344,7 @@ namespace Casadeshow.Migrations
                         .WithMany()
                         .HasForeignKey("EventoId");
 
-                    b.HasOne("Casadeshow.Models.User", "User")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });

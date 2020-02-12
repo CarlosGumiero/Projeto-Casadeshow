@@ -75,20 +75,17 @@ namespace Casadeshow.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Usuario",
+                name: "Testee",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ImajId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Older = table.Column<bool>(nullable: false),
-                    Admin = table.Column<bool>(nullable: false)
+                    Nome = table.Column<string>(nullable: false),
+                    Foto = table.Column<byte[]>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuario", x => x.Id);
+                    table.PrimaryKey("PK_Testee", x => x.ImajId);
                 });
 
             migrationBuilder.CreateTable(
@@ -234,7 +231,7 @@ namespace Casadeshow.Migrations
                 {
                     HistoricoId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<int>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
                     EventoId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -247,9 +244,9 @@ namespace Casadeshow.Migrations
                         principalColumn: "EventoId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Historico_Usuario_UserId",
+                        name: "FK_Historico_AspNetUsers_UserId",
                         column: x => x.UserId,
-                        principalTable: "Usuario",
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -333,16 +330,16 @@ namespace Casadeshow.Migrations
                 name: "Historico");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Testee");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Evento");
 
             migrationBuilder.DropTable(
-                name: "Usuario");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "CasaDeShow");

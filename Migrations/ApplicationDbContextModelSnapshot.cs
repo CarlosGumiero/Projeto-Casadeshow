@@ -110,6 +110,25 @@ namespace Casadeshow.Migrations
                     b.ToTable("Historico");
                 });
 
+            modelBuilder.Entity("Casadeshow.Models.Testee", b =>
+                {
+                    b.Property<int>("ImajId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("Foto")
+                        .IsRequired()
+                        .HasColumnType("longblob");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("ImajId");
+
+                    b.ToTable("Testee");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
