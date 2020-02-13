@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Casadeshow.Data;
 using Casadeshow.Models;
 using Casadeshow.DTO;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Casadeshow.Controllers 
 {
@@ -35,9 +37,8 @@ namespace Casadeshow.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-         public async Task<IActionResult> Create([Bind("EventoId,Nome,Capacidade,PrecoIngresso,Data,QtdIngresso,CasaDeShow,Genero")] EventoDTO eventotemp)
+         public async Task<IActionResult> Create([Bind("EventoId,Nome,Capacidade,PrecoIngresso,Data,QtdIngresso,CasaDeShow,Genero,Foto")] EventoDTO eventotemp, IFormFile Image)
         {
-            
             if (ModelState.IsValid)
             {
                 Evento evento = new Evento();
@@ -50,6 +51,21 @@ namespace Casadeshow.Controllers
                 evento.CasaDeShow = _context.CasaDeShow.First(cs => cs.CasaDeShowId == eventotemp.CasaDeShow);
                 evento.Genero = _context.Genero.First(cs => cs.GeneroId == eventotemp.Genero);
 
+                if (Image != null)
+                {
+                    byte[] b;
+                    using(var or = Image.OpenReadStream())
+                    {
+                        using(var ms = new MemoryStream())
+                        {
+                            or.CopyTo(ms);
+                            b = ms.ToArray();
+                        }
+                    }
+                    eventotemp.Foto = b;
+                    evento.Foto = eventotemp.Foto;
+                }
+
                 _context.Add(evento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -60,6 +76,14 @@ namespace Casadeshow.Controllers
 
             return View(eventotemp);
         }
+
+        public IActionResult PegarImagem(int id)
+        {
+            byte[] b =_context.Evento.Find(id).Foto;
+
+            return File(b, "image/jpg");
+        }
+
         public async Task<IActionResult> Edit(int? id)
         {
             ViewBag.Casadeshow = _context.CasaDeShow.ToList();
@@ -86,6 +110,7 @@ namespace Casadeshow.Controllers
             dto.QtdIngresso = evento.QtdIngresso;
             dto.CasaDeShow = evento.CasaDeShow.CasaDeShowId;
             dto.Genero = evento.Genero.GeneroId;
+            dto.Foto = evento.Foto;
 
 
             return View(dto);
@@ -93,7 +118,7 @@ namespace Casadeshow.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventoId,Nome,Capacidade,PrecoIngresso,Data,QtdIngresso,CasaDeShow,Genero")] EventoDTO eventotemp)
+        public async Task<IActionResult> Edit(int id, [Bind("EventoId,Nome,Capacidade,PrecoIngresso,Data,QtdIngresso,CasaDeShow,Genero,Foto")] EventoDTO eventotemp, IFormFile Image)
         {
             if (id != eventotemp.EventoId)
             {
@@ -113,6 +138,23 @@ namespace Casadeshow.Controllers
                     evento.QtdIngresso = eventotemp.QtdIngresso;
                     evento.CasaDeShow = _context.CasaDeShow.First(cs => cs.CasaDeShowId == eventotemp.CasaDeShow);
                     evento.Genero = _context.Genero.First(cs => cs.GeneroId == eventotemp.Genero);
+                    evento.Foto = eventotemp.Foto;
+
+                    if (Image != null)
+                    {
+                        byte[] b;
+                        using(var or = Image.OpenReadStream())
+                        {
+                            using(var ms = new MemoryStream())
+                            {
+                                or.CopyTo(ms);
+                                b = ms.ToArray();
+                            }
+                        }
+                        eventotemp.Foto = b;
+                        evento.Foto = eventotemp.Foto;
+                        // evento.Foto = b;
+                    }
 
                     _context.Update(evento);
                     await _context.SaveChangesAsync();

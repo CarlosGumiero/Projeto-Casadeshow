@@ -27,54 +27,50 @@ namespace Casadeshow.Controllers
             return View(await _context.Historico.ToListAsync());
         }
 
-        // public async Task<IActionResult>  Create(int? id)
-        // {
-        //     ViewBag.Evento = _context.Evento.ToList();
-        //     var hist = await _context.Historico.Include(g => g.Evento).SingleOrDefaultAsync(g => g.HistoricoId == id);
-        //     HistoricoDTO histTemp = new HistoricoDTO();
-        //        histTemp.HistoricoId = hist.HistoricoId;
-        //          histTemp.Evento = hist.Evento.EventoId;
-        //     return View("Confirm",histTemp);
-        // }
+        public IActionResult Create()
+        {
+            ViewBag.Evento = _context.Evento.ToList();
+            return View();
+        }
 
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        //  public  async Task<IActionResult> Create(int id, [Bind("HistoricoId,EventoId")] HistoricoDTO histTemp)
-        // {
-        //     if (id != histTemp.HistoricoId)
-        //     {
-        //         return NotFound();
-        //     }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+         public  async Task<IActionResult> Create(int id, [Bind("HistoricoId,EventoId")] HistoricoDTO histTemp)
+        {
+            if (id != histTemp.HistoricoId)
+            {
+                return NotFound();
+            }
 
-        //     if (ModelState.IsValid)
-        //     {
-        //         try
-        //         {
-        //             Historico hist = new Historico();
-        //         hist.HistoricoId = histTemp.HistoricoId;
-        //         hist.Evento = _context.Evento.First(cs => cs.EventoId == histTemp.Evento);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Historico hist = new Historico();
+                hist.HistoricoId = histTemp.HistoricoId;
+                hist.Evento = _context.Evento.First(cs => cs.EventoId == histTemp.Evento);
 
-        //             _context.Update(hist);
-        //             await _context.SaveChangesAsync();
-        //             return RedirectToAction(nameof(Index));
-        //         }
+                    _context.Update(hist);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
 
-        //         catch (DbUpdateConcurrencyException)
-        //         {
-        //             if (!HistoricoExists(histTemp.HistoricoId))
-        //             {
-        //                 return NotFound();
-        //             }
-        //             else
-        //             {
-        //                 throw;
-        //             }
-        //         }
-        //     }
-        //     ViewBag.Casadeshow = _context.CasaDeShow.ToList();
-        //     ViewBag.Genero = _context.Genero.ToList();
-        //     return View(histTemp);
-        // }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!HistoricoExists(histTemp.HistoricoId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            ViewBag.Casadeshow = _context.CasaDeShow.ToList();
+            ViewBag.Genero = _context.Genero.ToList();
+            return View(histTemp);
+        }
 
 
 

@@ -1,62 +1,12 @@
 @model IEnumerable<Casadeshow.Models.Historico>
 
-@* @{
-    ViewData["Title"] = "Histórico";
-}
-
-<div style="text-align:center;border:3px solid green">
-    <h1>Seu histórico de compras</h1>
-</div>
-
-<p>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @foreach (var item in Model) 
-{
-    <div class="contaner row" style="border:3px solid blue">
-
-        <div class="col-sm-4 text-center">
-            xxxxx
-        </div>
-
-        <div class="col-sm-4 text-center">
-            <br>
-                @Html.DisplayFor(modelItem => item.Evento.Nome)
-            <br>
-        </div>
-
-                
-                <div class="col-sm-4 text-center">
-                </div>
-
-                    <div class="form-group">
-                        @Html.DisplayFor(modelItem => item.Evento.Nome)
-                    </div>
-    </div>
-        <br>
-}
-
-    </tbody>
-</table> *@
-
 @{
-    ViewData["Title"] = "Eventos";
+    ViewData["Title"] = "Seu histórico";
 }
 
 <div style="text-align:center;border:3px solid green">
-    <h1>Eventos</h1>
-</div>
-
-<p>
-    <a asp-action="Create">Criar novo evento</a>
-</p>
+    <h1>Seu histórico</h1>
+</div>x
 <table class="table">
     <thead>
         <tr>
@@ -87,6 +37,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Evento.Nome)
             </td>
+                @Html.DisplayFor(modelItem => item.User.Id)
             <td>
             </td>
             <td>

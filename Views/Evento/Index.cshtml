@@ -35,6 +35,9 @@
             <th>
                 Gênero
             </th>
+            <th>
+                
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -63,8 +66,11 @@
                 @Html.DisplayFor(modelItem => item.Genero.Nome)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EventoId">Editar</a> |
-                <a asp-action="Delete" asp-route-id="@item.EventoId">Excluir</a>
+                <img src="@Url.Action("PegarImagem", "Evento", new {id = item.EventoId})" width="150px" height="150px" />
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EventoId" style="color: darkblue;">Editar</a> 
+                <a asp-action="Delete" asp-route-id="@item.EventoId" style="color: red;">Excluir</a>
             </td>
         </tr>
 }

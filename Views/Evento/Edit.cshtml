@@ -9,7 +9,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="EventoId" />
             <div class="form-group">
@@ -44,6 +44,11 @@
             <div class="form-group">
                 <label asp-for="Genero" class="control-label">Gênero</label>
                 <select class="form-control" asp-for="Genero" asp-items='@(new SelectList(@ViewBag.Genero, "GeneroId", "Nome"))'></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Foto" class="control-label"></label>
+                <input asp-for="Foto" type="file" name="Image" id="Image" class="form-control"/>
+                <span asp-validation-for="Foto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <button type="submit" value="Save" class="btn btn-primary">Editar</button>

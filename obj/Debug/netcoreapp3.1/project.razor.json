@@ -20566,11 +20566,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Testee\\Create.cshtml",
-      "TargetPath": "Views\\Testee\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Shared\\_LoginPartial.cshtml",
       "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
       "FileKind": "mvc"
@@ -20578,16 +20573,6 @@
     {
       "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Testee\\Delete.cshtml",
-      "TargetPath": "Views\\Testee\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Testee\\Index.cshtml",
-      "TargetPath": "Views\\Testee\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20643,11 +20628,6 @@
     {
       "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Testee\\Edit.cshtml",
-      "TargetPath": "Views\\Testee\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {

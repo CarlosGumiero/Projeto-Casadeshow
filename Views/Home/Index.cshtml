@@ -3,52 +3,49 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
 <div style="text-align:center;border:3px solid green">
     <h1>Bem Vindos</h1>
 </div>
 
 <table class="table">
     <thead>
-
         <tbody>
             <br>
-@foreach (var item in Model) 
-{
-    <div class="contaner row" style="border:3px solid blue">
+            @foreach (var item in Model) 
+            {
+                <div class="contaner row" style="border:3px solid blue">
 
-        <div class="col-sm-4 text-center">
-            xxxxx
-        </div>
+                    <div class="col-sm-3  centralizar">
+                        <img src="@Url.Action("PegarImagem", "Evento", new {id = item.EventoId})" width="200px" height="200px" />
+                    </div>
 
-        <div class="col-sm-4 text-center">
-            <br>
-                    <h5>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </h5>
-                <br>
-                    @Html.DisplayFor(modelItem => item.Capacidade)
-                <br>
-                    @Html.DisplayFor(modelItem => item.PrecoIngresso)
-                <br>
-                    @Html.DisplayFor(modelItem => item.Data)
-                <br>
-                    @Html.DisplayFor(modelItem => item.QtdIngresso)
-                <br>
-                    @Html.DisplayFor(modelItem => item.CasaDeShow.Nome)
-                <br>
-                    @Html.DisplayFor(modelItem => item.Genero.Nome)
-                <br>
-                <br>
-            </div>
+                    <div class="col-sm-7 text-center ">
+                        <br><br>
+                                <h5>
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </h5>
+                            <br>
+                                R$ @Html.DisplayFor(modelItem => item.PrecoIngresso) taokeis
+                            <br>
+                                Data: @Html.DisplayFor(modelItem => item.Data)
+                            <br>
+                                Ingressos disponíveis: @Html.DisplayFor(modelItem => item.QtdIngresso)
+                            <br>
+                                Casa de show: @Html.DisplayFor(modelItem => item.CasaDeShow.Nome)
+                            <br>
+                                Gênero: @Html.DisplayFor(modelItem => item.Genero.Nome)
+                            <br>
+                    </div>
 
-                <div class="col-sm-4 text-center">
-                    <p></p>
+                    <div class="col-sm-2 centralizar" >
+                        <button asp-controller="Historico" asp-action="Create" type="submit" value="Comprar" class="btn btn-primary">Comprar</button>
+                    </div>
+
                 </div>
-
-            </div>
-            <br>
+                        <br>
 }
-    </tbody>
+        </tbody>
         
     </thead>
 </table>
