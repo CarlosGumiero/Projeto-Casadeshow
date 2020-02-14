@@ -176,3 +176,4 @@ C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\Genero\De
 C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\Genero\Edit.cshtml.g.cs
 C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\Genero\Index.cshtml.g.cs
 C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\Historico\Confirm.cshtml.g.cs
+C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs

@@ -10,6 +10,7 @@ using Casadeshow.Models;
 using Casadeshow.DTO;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Casadeshow.Controllers 
 {
@@ -29,6 +30,7 @@ namespace Casadeshow.Controllers
             return View(await _context.Evento.ToListAsync());
         }
 
+        [Authorize (Policy = "Adm")]
         public IActionResult Create()
         {
             ViewBag.Casadeshow = _context.CasaDeShow.ToList();
@@ -153,7 +155,6 @@ namespace Casadeshow.Controllers
                         }
                         eventotemp.Foto = b;
                         evento.Foto = eventotemp.Foto;
-                        // evento.Foto = b;
                     }
 
                     _context.Update(evento);

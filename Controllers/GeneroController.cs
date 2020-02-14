@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Casadeshow.Data;
 using Casadeshow.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Casadeshow.Controllers
 {
@@ -24,6 +25,7 @@ namespace Casadeshow.Controllers
             return View(await _context.Genero.ToListAsync());
         }
 
+        [Authorize (Policy = "Adm")]
         public IActionResult Create()
         {
             return View();

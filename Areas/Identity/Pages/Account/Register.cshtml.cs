@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -64,6 +65,8 @@ namespace Casadeshow.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "User:")]
             public string UserName { get; set; }
+
+            public bool Adm { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -78,11 +81,14 @@ namespace Casadeshow.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.UserName, Email = Input.Email };
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                   await _userManager.AddClaimAsync(user, new Claim("Adm", Input.Adm.ToString()));
+                   await _userManager.AddToRoleAsync(user, "Adm");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -111,7 +117,6 @@ namespace Casadeshow.Areas.Identity.Pages.Account
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
     }

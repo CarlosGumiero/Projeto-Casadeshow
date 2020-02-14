@@ -20536,6 +20536,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Genero\\Index.cshtml",
       "TargetPath": "Views\\Genero\\Index.cshtml",
       "FileKind": "mvc"

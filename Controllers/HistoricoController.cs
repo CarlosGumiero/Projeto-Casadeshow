@@ -35,41 +35,22 @@ namespace Casadeshow.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-         public  async Task<IActionResult> Create(int id, [Bind("HistoricoId,EventoId")] HistoricoDTO histTemp)
+         public  async Task<IActionResult> Create(int id, [Bind("HistoricoId,EventoId")] Historico ht)
         {
-            if (id != histTemp.HistoricoId)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    Historico hist = new Historico();
-                hist.HistoricoId = histTemp.HistoricoId;
-                hist.Evento = _context.Evento.First(cs => cs.EventoId == histTemp.Evento);
+                Historico hist = new Historico();
+                hist.HistoricoId = ht.HistoricoId;
+                // hist.Evento = _context.Evento.First(cs => cs.EventoId == ht.Evento);
 
-                    _context.Update(hist);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!HistoricoExists(histTemp.HistoricoId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _context.Add(hist);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            ViewBag.Casadeshow = _context.CasaDeShow.ToList();
-            ViewBag.Genero = _context.Genero.ToList();
-            return View(histTemp);
+            
+            ViewBag.Evento = _context.Evento.ToList();
+
+            return View(ht);
         }
 
 

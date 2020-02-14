@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Casadeshow.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200213115625_UpdateEvento")]
-    partial class UpdateEvento
+    [Migration("20200214130732_AddCasaDeShow")]
+    partial class AddCasaDeShow
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,23 +113,6 @@ namespace Casadeshow.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Historico");
-                });
-
-            modelBuilder.Entity("Casadeshow.Models.Testee", b =>
-                {
-                    b.Property<int>("ImajId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("Foto")
-                        .HasColumnType("longblob");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("ImajId");
-
-                    b.ToTable("Testee");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

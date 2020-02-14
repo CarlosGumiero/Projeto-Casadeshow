@@ -75,20 +75,6 @@ namespace Casadeshow.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Testee",
-                columns: table => new
-                {
-                    ImajId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: false),
-                    Foto = table.Column<byte[]>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Testee", x => x.ImajId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -206,7 +192,8 @@ namespace Casadeshow.Migrations
                     CasaDeShowId = table.Column<int>(nullable: true),
                     Data = table.Column<DateTime>(nullable: false),
                     QtdIngresso = table.Column<int>(nullable: false),
-                    GeneroId = table.Column<int>(nullable: true)
+                    GeneroId = table.Column<int>(nullable: true),
+                    Foto = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -328,9 +315,6 @@ namespace Casadeshow.Migrations
 
             migrationBuilder.DropTable(
                 name: "Historico");
-
-            migrationBuilder.DropTable(
-                name: "Testee");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

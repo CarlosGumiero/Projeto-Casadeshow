@@ -7,6 +7,8 @@ namespace Casadeshow.Models
         [Required]
         [Key]
         public int GeneroId {get; set;}
+
+        [Required(ErrorMessage="Campo obrigatório.")]
         public string Nome {get; set;}
     }
 }

@@ -38,6 +38,8 @@ namespace Casadeshow
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddAuthorization(options => options.AddPolicy("Adm", policy => policy.RequireClaim("Adm", "True")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
