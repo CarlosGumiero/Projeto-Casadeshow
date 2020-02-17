@@ -27,32 +27,15 @@ namespace Casadeshow.Controllers
             return View(await _context.Historico.ToListAsync());
         }
 
-        public IActionResult Create()
+        [HttpPost]
+        public IActionResult Create(Historico hist)
         {
+            hist.Evento = _context.Evento.First(cs => cs.EventoId == hist.Evento.EventoId);
+            _context.Historico.Add(hist);
             ViewBag.Evento = _context.Evento.ToList();
+
             return View();
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-         public  async Task<IActionResult> Create(int id, [Bind("HistoricoId,EventoId")] Historico ht)
-        {
-            if (ModelState.IsValid)
-            {
-                Historico hist = new Historico();
-                hist.HistoricoId = ht.HistoricoId;
-                // hist.Evento = _context.Evento.First(cs => cs.EventoId == ht.Evento);
-
-                _context.Add(hist);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            
-            ViewBag.Evento = _context.Evento.ToList();
-
-            return View(ht);
-        }
-
 
 
         private bool HistoricoExists(int id)

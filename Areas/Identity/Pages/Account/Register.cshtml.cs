@@ -88,7 +88,6 @@ namespace Casadeshow.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                    await _userManager.AddClaimAsync(user, new Claim("Adm", Input.Adm.ToString()));
-                   await _userManager.AddToRoleAsync(user, "Adm");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

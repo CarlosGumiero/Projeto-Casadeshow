@@ -25,9 +25,16 @@ namespace Casadeshow.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.Casadeshow = _context.CasaDeShow.ToList();
-            ViewBag.Genero = _context.Genero.ToList();
-            return View(await _context.Evento.ToListAsync());
+            if(_context.CasaDeShow.Count() == 0)
+            {
+                return View("CasaVazia");
+            }
+            else
+            {
+                ViewBag.Casadeshow = _context.CasaDeShow.ToList();
+                ViewBag.Genero = _context.Genero.ToList();
+                return View(await _context.Evento.ToListAsync());
+            }
         }
 
         [Authorize (Policy = "Adm")]

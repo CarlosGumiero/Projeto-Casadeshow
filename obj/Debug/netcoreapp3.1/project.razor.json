@@ -20616,6 +20616,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Evento\\CasaVazia.cshtml",
+      "TargetPath": "Views\\Evento\\CasaVazia.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Evento\\Index.cshtml",
       "TargetPath": "Views\\Evento\\Index.cshtml",
       "FileKind": "mvc"

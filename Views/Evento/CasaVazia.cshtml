@@ -1,0 +1,11 @@
+@model Casadeshow.Models.Evento;
+
+@{
+    ViewData["Title"] = "Sem casas de show";
+}
+
+<h3 style="color: red;">Não possui nenhuma casa de show cadastrada!!</h3>
+
+<div>
+    <a asp-controller="CasaDeShow" asp-action="Create" style="color: royalblue;">Cadastrar casas de show</a>
+</div>
