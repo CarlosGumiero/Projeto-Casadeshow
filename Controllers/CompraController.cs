@@ -11,23 +11,24 @@ using Casadeshow.DTO;
 
 namespace Casadeshow.Controllers
 {
-    public class HistoricoController : Controller
+    public class CompraController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public HistoricoController(ApplicationDbContext context)
+        public CompraController(ApplicationDbContext context)
         {
             _context = context;
         }
-
-        public IActionResult Index()
+        public IActionResult Compra(int? id)
         {
-            return View();
+            var evento = _context.Evento.ToList();
+
+            Compra buy = new Compra();
+            buy.Evento = _context.Evento.First(c => c.EventoId == id);
+
+            return View(buy);
         }
 
-        private bool HistoricoExists(int id)
-        {
-            return _context.Historico.Any(e => e.HistoricoId == id);
-        }
+
     }
 }

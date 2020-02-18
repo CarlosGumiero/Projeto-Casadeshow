@@ -17,6 +17,8 @@ namespace Casadeshow.Data
         public DbSet<Casadeshow.Models.Evento> Evento { get; set; }
         public DbSet<Casadeshow.Models.Genero> Genero { get; set; }
         public DbSet<Casadeshow.Models.Historico> Historico { get; set; }
+        public DbSet<Casadeshow.Models.Compra> Compra { get; set; }
+        public DbSet<Casadeshow.Models.Saida> Saida { get; set; }
 
     }
 }

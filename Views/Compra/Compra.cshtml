@@ -1,0 +1,89 @@
+ @model Casadeshow.Models.Compra
+    
+@*<h1 style="text-align: center;">Compra</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                Nome do evento
+            </td>
+        </tr>
+         <tr>
+            <td>
+                Ingressos disponíveis
+            </td>
+        </tr>
+         <tr>
+            <td>
+                Quantidade da compra
+            </td>
+        </tr>
+         <tr>
+            <td>
+                Data
+            </td>
+        </tr>
+         <tr>
+            <td>
+                Total
+            </td>
+        </tr>
+         <tr>
+            <td>
+                Botao
+            </td>
+        </tr>
+    </thead>
+</table> *@
+
+@{
+    ViewData["Title"] = "Compra";
+}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+
+<br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
+<hr>
+
+
+
+
+<div class="row">
+<div class="col-md-4">
+</div> <!-- col // -->
+<div class="col-md-4">
+	<figure class="card card-product">
+		<figcaption class="info-wrap">
+				<h4 class="title" style="text-align: center;">Evento</h4>
+
+                <label asp-for="QtdIngressos" class="control-label" aria-valuenow="4" aria-valuemin="1" aria-valuemax="@Model.Evento.QtdIngresso">Número de ingressos para compra:</label>
+                <input asp-for="QtdIngressos" class="form-control" />
+                @Model.Evento.EventoId
+
+            <div class="form-group">
+            </div>
+
+				<div class="rating-wrap">
+					<div class="label-rating">132 reviews</div>
+					<div class="label-rating">154 orders </div>
+				</div> <!-- rating-wrap.// -->
+		</figcaption>
+		<div class="bottom-wrap">
+				<a href="" class="btn btn-sm btn-primary float-right">Order Now</a>	
+				<div class="price-wrap h3" style="text-align: center; color: forestgreen;">
+					<span class="price-new">$1280</span>
+				</div> <!-- price-wrap.// -->
+		</div> <!-- bottom-wrap.// -->
+	</figure>
+</div> <!-- col // -->
+<div class="col-md-4">
+</div> <!-- col // -->
+</div> <!-- row.// -->
+
+</div> 

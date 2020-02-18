@@ -20621,6 +20621,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Compra\\ConfirmaCompra.cshtml",
+      "TargetPath": "Views\\Compra\\ConfirmaCompra.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Compra\\Compra.cshtml",
+      "TargetPath": "Views\\Compra\\Compra.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Evento\\Index.cshtml",
       "TargetPath": "Views\\Evento\\Index.cshtml",
       "FileKind": "mvc"

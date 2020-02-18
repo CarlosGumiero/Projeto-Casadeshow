@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Casadeshow.Migrations
 {
-    public partial class AddCasaDeShow : Migration
+    public partial class CompraSaidaHistorico : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,12 +62,26 @@ namespace Casadeshow.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Compra",
+                columns: table => new
+                {
+                    CompraId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Data = table.Column<DateTime>(nullable: false),
+                    Total = table.Column<float>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Compra", x => x.CompraId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Genero",
                 columns: table => new
                 {
                     GeneroId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true)
+                    Nome = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -181,6 +195,32 @@ namespace Casadeshow.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Historico",
+                columns: table => new
+                {
+                    HistoricoId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(nullable: true),
+                    CompraId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Historico", x => x.HistoricoId);
+                    table.ForeignKey(
+                        name: "FK_Historico_Compra_CompraId",
+                        column: x => x.CompraId,
+                        principalTable: "Compra",
+                        principalColumn: "CompraId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Historico_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Evento",
                 columns: table => new
                 {
@@ -213,28 +253,23 @@ namespace Casadeshow.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Historico",
+                name: "Saida",
                 columns: table => new
                 {
-                    HistoricoId = table.Column<int>(nullable: false)
+                    SaidaId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<string>(nullable: true),
-                    EventoId = table.Column<int>(nullable: true)
+                    EventoId = table.Column<int>(nullable: true),
+                    ValorDaVenda = table.Column<float>(nullable: false),
+                    Data = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Historico", x => x.HistoricoId);
+                    table.PrimaryKey("PK_Saida", x => x.SaidaId);
                     table.ForeignKey(
-                        name: "FK_Historico_Evento_EventoId",
+                        name: "FK_Saida_Evento_EventoId",
                         column: x => x.EventoId,
                         principalTable: "Evento",
                         principalColumn: "EventoId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Historico_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -286,14 +321,19 @@ namespace Casadeshow.Migrations
                 column: "GeneroId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Historico_EventoId",
+                name: "IX_Historico_CompraId",
                 table: "Historico",
-                column: "EventoId");
+                column: "CompraId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Historico_UserId",
                 table: "Historico",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Saida_EventoId",
+                table: "Saida",
+                column: "EventoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -317,13 +357,19 @@ namespace Casadeshow.Migrations
                 name: "Historico");
 
             migrationBuilder.DropTable(
+                name: "Saida");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Evento");
+                name: "Compra");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Evento");
 
             migrationBuilder.DropTable(
                 name: "CasaDeShow");

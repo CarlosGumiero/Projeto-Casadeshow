@@ -9,6 +9,6 @@ namespace Casadeshow.Models
         [Key]
         public int HistoricoId {get; set;}
         public IdentityUser User {get; set;}
-        public Evento Evento {get; set;}
+        public Compra Compra {get; set;}
     }
 }

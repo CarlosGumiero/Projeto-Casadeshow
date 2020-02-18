@@ -8,6 +8,7 @@
     <h1>Bem Vindo</h1>
 </div>
 
+
 <table class="table">
     <thead>
         <tbody>
@@ -39,7 +40,7 @@
                     </div>
 
                     <div class="col-sm-2 centralizar" >
-                        <button asp-controller="Historico" asp-action="Create" type="submit" value="Comprar" class="btn btn-primary">Comprar</button>
+                        <a asp-controller="Compra" asp-action="Compra" asp-route-id="@item.EventoId" style="color: darkblue;">Comprar</a> 
                     </div>
 
                 </div>

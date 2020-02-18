@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Casadeshow.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200214130732_AddCasaDeShow")]
-    partial class AddCasaDeShow
+    [Migration("20200218130551_varEvento")]
+    partial class varEvento
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,6 +38,31 @@ namespace Casadeshow.Migrations
                     b.HasKey("CasaDeShowId");
 
                     b.ToTable("CasaDeShow");
+                });
+
+            modelBuilder.Entity("Casadeshow.Models.Compra", b =>
+                {
+                    b.Property<int>("CompraId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("EventoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QtdIngressos")
+                        .HasColumnType("int");
+
+                    b.Property<float>("Total")
+                        .HasColumnType("float");
+
+                    b.HasKey("CompraId");
+
+                    b.HasIndex("EventoId");
+
+                    b.ToTable("Compra");
                 });
 
             modelBuilder.Entity("Casadeshow.Models.Evento", b =>
@@ -87,6 +112,7 @@ namespace Casadeshow.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("GeneroId");
@@ -100,7 +126,7 @@ namespace Casadeshow.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("EventoId")
+                    b.Property<int?>("CompraId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -108,11 +134,33 @@ namespace Casadeshow.Migrations
 
                     b.HasKey("HistoricoId");
 
-                    b.HasIndex("EventoId");
+                    b.HasIndex("CompraId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Historico");
+                });
+
+            modelBuilder.Entity("Casadeshow.Models.Saida", b =>
+                {
+                    b.Property<int>("SaidaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("EventoId")
+                        .HasColumnType("int");
+
+                    b.Property<float>("ValorDaVenda")
+                        .HasColumnType("float");
+
+                    b.HasKey("SaidaId");
+
+                    b.HasIndex("EventoId");
+
+                    b.ToTable("Saida");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -311,6 +359,13 @@ namespace Casadeshow.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Casadeshow.Models.Compra", b =>
+                {
+                    b.HasOne("Casadeshow.Models.Evento", "Evento")
+                        .WithMany()
+                        .HasForeignKey("EventoId");
+                });
+
             modelBuilder.Entity("Casadeshow.Models.Evento", b =>
                 {
                     b.HasOne("Casadeshow.Models.CasaDeShow", "CasaDeShow")
@@ -324,13 +379,20 @@ namespace Casadeshow.Migrations
 
             modelBuilder.Entity("Casadeshow.Models.Historico", b =>
                 {
-                    b.HasOne("Casadeshow.Models.Evento", "Evento")
+                    b.HasOne("Casadeshow.Models.Compra", "Compra")
                         .WithMany()
-                        .HasForeignKey("EventoId");
+                        .HasForeignKey("CompraId");
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Casadeshow.Models.Saida", b =>
+                {
+                    b.HasOne("Casadeshow.Models.Evento", "Evento")
+                        .WithMany()
+                        .HasForeignKey("EventoId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

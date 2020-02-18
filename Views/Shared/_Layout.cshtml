@@ -36,7 +36,10 @@
             <a class="nav-link text-dark" asp-area="" asp-controller="Genero" asp-action="Index">Gêneros</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Historico" asp-action="Index">Seu histórico de eventos</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Historico" asp-action="Index">Histórico</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Compra" asp-action="Index">Compras</a>
         </li>
     </ul>
 }
@@ -45,6 +48,9 @@ else if(SignInManager.IsSignedIn(User))
     <ul class="navbar-nav flex-grow-1">
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Historico" asp-action="Index">Seu histórico de eventos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Compra" asp-action="Index">Compras</a>
         </li>
     </ul>
 }

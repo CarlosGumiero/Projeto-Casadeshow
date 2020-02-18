@@ -178,3 +178,5 @@ C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\Genero\In
 C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\Historico\Confirm.cshtml.g.cs
 C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
 C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\Evento\CasaVazia.cshtml.g.cs
+C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\Compra\Compra.cshtml.g.cs
+C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\Compra\ConfirmaCompra.cshtml.g.cs

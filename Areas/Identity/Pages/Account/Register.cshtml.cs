@@ -64,7 +64,7 @@ namespace Casadeshow.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name = "User:")]
-            public string UserName { get; set; }
+            public string NomeUser { get; set; }
 
             public bool Adm { get; set; }
         }
@@ -88,6 +88,7 @@ namespace Casadeshow.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                    await _userManager.AddClaimAsync(user, new Claim("Adm", Input.Adm.ToString()));
+                   await _userManager.AddClaimAsync(user, new Claim("NomeUser", Input.NomeUser));
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

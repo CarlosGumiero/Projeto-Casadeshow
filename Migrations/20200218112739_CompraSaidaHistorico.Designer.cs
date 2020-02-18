@@ -3,14 +3,16 @@ using System;
 using Casadeshow.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Casadeshow.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200218112739_CompraSaidaHistorico")]
+    partial class CompraSaidaHistorico
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,18 +49,10 @@ namespace Casadeshow.Migrations
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("EventoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QtdIngressos")
-                        .HasColumnType("int");
-
                     b.Property<float>("Total")
                         .HasColumnType("float");
 
                     b.HasKey("CompraId");
-
-                    b.HasIndex("EventoId");
 
                     b.ToTable("Compra");
                 });
@@ -355,13 +349,6 @@ namespace Casadeshow.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Casadeshow.Models.Compra", b =>
-                {
-                    b.HasOne("Casadeshow.Models.Evento", "Evento")
-                        .WithMany()
-                        .HasForeignKey("EventoId");
                 });
 
             modelBuilder.Entity("Casadeshow.Models.Evento", b =>
