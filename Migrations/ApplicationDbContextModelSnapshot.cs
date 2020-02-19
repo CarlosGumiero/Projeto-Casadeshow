@@ -50,6 +50,9 @@ namespace Casadeshow.Migrations
                     b.Property<int?>("EventoId")
                         .HasColumnType("int");
 
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
                     b.Property<int>("QtdIngressos")
                         .HasColumnType("int");
 
@@ -59,6 +62,8 @@ namespace Casadeshow.Migrations
                     b.HasKey("CompraId");
 
                     b.HasIndex("EventoId");
+
+                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("Compra");
                 });
@@ -362,6 +367,10 @@ namespace Casadeshow.Migrations
                     b.HasOne("Casadeshow.Models.Evento", "Evento")
                         .WithMany()
                         .HasForeignKey("EventoId");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
                 });
 
             modelBuilder.Entity("Casadeshow.Models.Evento", b =>

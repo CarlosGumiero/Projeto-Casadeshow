@@ -19,6 +19,7 @@ namespace Casadeshow.Controllers
         {
             _context = context;
         }
+
         public IActionResult Compra(int? id)
         {
             var evento = _context.Evento.ToList();
@@ -27,6 +28,30 @@ namespace Casadeshow.Controllers
             buy.Evento = _context.Evento.First(c => c.EventoId == id);
 
             return View(buy);
+        }
+
+        public IActionResult HistCompra()
+        {
+            ViewBag.Evento = _context.Evento.ToList();
+            return View();
+        }
+
+        //Salvando as informações da View Compra
+        [HttpPost]
+        public IActionResult ConfirmaCompra(Compra compra)
+        {
+            compra.Evento = _context.Evento.First(c => c.EventoId == compra.Evento.EventoId);
+            compra.Data = DateTime.Now;
+            compra.Total = (compra.QtdIngressos * compra.Evento.PrecoIngresso);
+
+            //Mudando a quantidade de ingressos do bando de dados do evento
+            var zea = _context.Evento.First(c => c.EventoId == compra.Evento.EventoId);
+            zea.QtdIngresso -= compra.QtdIngressos;
+            
+            _context.Update(zea);
+            _context.Add(compra);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home");
         }
 
 

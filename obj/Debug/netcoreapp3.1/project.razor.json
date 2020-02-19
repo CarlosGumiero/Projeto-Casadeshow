@@ -20611,6 +20611,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Compra\\HistCompra.cshtml",
+      "TargetPath": "Views\\Compra\\HistCompra.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Evento\\Edit.cshtml",
       "TargetPath": "Views\\Evento\\Edit.cshtml",
       "FileKind": "mvc"
@@ -20618,11 +20623,6 @@
     {
       "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Evento\\CasaVazia.cshtml",
       "TargetPath": "Views\\Evento\\CasaVazia.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Compra\\ConfirmaCompra.cshtml",
-      "TargetPath": "Views\\Compra\\ConfirmaCompra.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<Casadeshow.Models.Evento>
-
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+    
 @{
     ViewData["Title"] = "Eventos";
 }
@@ -7,7 +10,6 @@
 <div style="text-align:center;border:3px solid green">
     <h1>Bem Vindo</h1>
 </div>
-
 
 <table class="table">
     <thead>
@@ -37,19 +39,18 @@
                             <br>
                                 Gênero: @Html.DisplayFor(modelItem => item.Genero.Nome)
                             <br>
-                    </div>
 
-                    <div class="col-sm-2 centralizar" >
-                        <a asp-controller="Compra" asp-action="Compra" asp-route-id="@item.EventoId" style="color: darkblue;">Comprar</a> 
                     </div>
-
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                <div class="col-sm-2 centralizar" >
+                                    <a asp-controller="Compra" asp-action="Compra" asp-route-id="@item.EventoId" style="color: darkblue;">Comprar</a>
+                                </div>
+                                }
                 </div>
-                        <br>
+                <br>
 }
         </tbody>
         
     </thead>
 </table>
-
-
-

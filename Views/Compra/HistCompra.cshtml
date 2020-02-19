@@ -1,0 +1,44 @@
+@model IEnumerable<Casadeshow.Models.Compra>
+
+    @{
+    ViewData["Title"] = "Eventos";
+}
+
+<div style="text-align:center;border:3px solid green">
+    <h1>Bem Vindo</h1>
+</div>
+
+    <table class="table">
+    <thead>
+        <tbody>
+            <br>
+            @foreach (var item in Model) 
+            {
+                <div class="contaner row" style="border:3px solid blue">
+
+                    <div class="col-sm-3  centralizar">
+                        <img src="@Url.Action("PegarImagem", "Evento", new {id = item.Evento.EventoId})" width="200px" height="200px" />
+                    </div>
+
+                    <div class="col-sm-7 text-center ">
+                        <br><br>
+                                <h5>
+                                    @Html.DisplayFor(modelItem => item.CompraId)
+                                </h5>
+                            <br>
+                                R$ @Html.DisplayFor(modelItem => item.Evento.Nome) taokeis
+                            <br>
+                                Data: @Html.DisplayFor(modelItem => item.Data)
+                            <br>
+                    </div>
+
+                    <div class="col-sm-2 centralizar" >
+                    </div>
+
+                </div>
+                <br>
+            }
+        </tbody>
+        
+    </thead>
+</table>

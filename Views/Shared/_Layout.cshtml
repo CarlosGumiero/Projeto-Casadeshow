@@ -16,12 +16,12 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
 
 @if (SignInManager.IsSignedIn(User) && User.FindFirst("Adm").Value == "True")
 {
@@ -36,10 +36,7 @@
             <a class="nav-link text-dark" asp-area="" asp-controller="Genero" asp-action="Index">Gêneros</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Historico" asp-action="Index">Histórico</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Compra" asp-action="Index">Compras</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Compra" asp-action="HistCompra">Histórico</a>
         </li>
     </ul>
 }
@@ -49,12 +46,10 @@ else if(SignInManager.IsSignedIn(User))
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Historico" asp-action="Index">Seu histórico de eventos</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Compra" asp-action="Index">Compras</a>
-        </li>
     </ul>
 }
                 </div>
+            <partial name="_LoginPartial" />
             </div>
         </nav>
     </header>
