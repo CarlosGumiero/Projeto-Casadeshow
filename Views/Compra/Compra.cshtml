@@ -1,4 +1,7 @@
  @model Casadeshow.Models.Compra
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManage
 
 @{
     ViewData["Title"] = "Compra";
@@ -24,6 +27,7 @@
                 <label asp-for="QtdIngressos" class="control-label" >Número de ingressos para compra:</label>
                 <input type="number" asp-for="QtdIngressos" class="form-control" value="1"  min="1" max="@Model.Evento.QtdIngresso"/>
                 <input type="hidden" asp-for="Evento.EventoId"/>
+				<input type="hidden" asp-for="IdentityUser.Id"/>
                 
             <div class="form-group">
             </div>

@@ -8,7 +8,14 @@
 }
 
 <div style="text-align:center;border:3px solid green">
-    <h1>Bem Vindo</h1>
+    @if (SignInManager.IsSignedIn(User))
+    {
+    <h1>Bem Vindo @User.FindFirst("NomeUser").Value!</h1>
+    }
+    else
+    {
+        <h1>Bem Vindo</h1>
+    }
 </div>
 
 <table class="table">
@@ -29,7 +36,7 @@
                                     @Html.DisplayFor(modelItem => item.Nome)
                                 </h5>
                             <br>
-                                R$ @Html.DisplayFor(modelItem => item.PrecoIngresso) taokeis
+                                R$ @Html.DisplayFor(modelItem => item.PrecoIngresso)
                             <br>
                                 Data: @Html.DisplayFor(modelItem => item.Data)
                             <br>

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Casadeshow.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200219143725_Banco")]
+    [Migration("20200220120535_Banco")]
     partial class Banco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,27 +123,6 @@ namespace Casadeshow.Migrations
                     b.HasKey("GeneroId");
 
                     b.ToTable("Genero");
-                });
-
-            modelBuilder.Entity("Casadeshow.Models.Historico", b =>
-                {
-                    b.Property<int>("HistoricoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CompraId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
-                    b.HasKey("HistoricoId");
-
-                    b.HasIndex("CompraId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Historico");
                 });
 
             modelBuilder.Entity("Casadeshow.Models.Saida", b =>
@@ -384,17 +363,6 @@ namespace Casadeshow.Migrations
                     b.HasOne("Casadeshow.Models.Genero", "Genero")
                         .WithMany()
                         .HasForeignKey("GeneroId");
-                });
-
-            modelBuilder.Entity("Casadeshow.Models.Historico", b =>
-                {
-                    b.HasOne("Casadeshow.Models.Compra", "Compra")
-                        .WithMany()
-                        .HasForeignKey("CompraId");
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Casadeshow.Models.Saida", b =>

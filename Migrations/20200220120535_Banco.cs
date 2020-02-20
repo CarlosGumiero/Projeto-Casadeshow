@@ -203,13 +203,13 @@ namespace Casadeshow.Migrations
                         column: x => x.CasaDeShowId,
                         principalTable: "CasaDeShow",
                         principalColumn: "CasaDeShowId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Evento_Genero_GeneroId",
                         column: x => x.GeneroId,
                         principalTable: "Genero",
                         principalColumn: "GeneroId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -232,13 +232,13 @@ namespace Casadeshow.Migrations
                         column: x => x.EventoId,
                         principalTable: "Evento",
                         principalColumn: "EventoId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Compra_AspNetUsers_IdentityUserId",
                         column: x => x.IdentityUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -259,33 +259,7 @@ namespace Casadeshow.Migrations
                         column: x => x.EventoId,
                         principalTable: "Evento",
                         principalColumn: "EventoId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Historico",
-                columns: table => new
-                {
-                    HistoricoId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<string>(nullable: true),
-                    CompraId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Historico", x => x.HistoricoId);
-                    table.ForeignKey(
-                        name: "FK_Historico_Compra_CompraId",
-                        column: x => x.CompraId,
-                        principalTable: "Compra",
-                        principalColumn: "CompraId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Historico_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -346,16 +320,6 @@ namespace Casadeshow.Migrations
                 column: "GeneroId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Historico_CompraId",
-                table: "Historico",
-                column: "CompraId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Historico_UserId",
-                table: "Historico",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Saida_EventoId",
                 table: "Saida",
                 column: "EventoId");
@@ -379,7 +343,7 @@ namespace Casadeshow.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Historico");
+                name: "Compra");
 
             migrationBuilder.DropTable(
                 name: "Saida");
@@ -388,13 +352,10 @@ namespace Casadeshow.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Compra");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Evento");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "CasaDeShow");

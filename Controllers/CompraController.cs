@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Casadeshow.Data;
 using Casadeshow.Models;
 using Casadeshow.DTO;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
 namespace Casadeshow.Controllers
 {
@@ -22,8 +25,6 @@ namespace Casadeshow.Controllers
 
         public IActionResult Compra(int? id)
         {
-            var evento = _context.Evento.ToList();
-
             Compra buy = new Compra();
             buy.Evento = _context.Evento.First(c => c.EventoId == id);
 
@@ -32,16 +33,23 @@ namespace Casadeshow.Controllers
 
         public IActionResult HistCompra()
         {
+
             ViewBag.Evento = _context.Evento.ToList();
-            return View();
+            ViewBag.Casadeshow = _context.CasaDeShow.ToList();
+            return View(_context.Compra.ToList());
         }
 
         //Salvando as informações da View Compra
         [HttpPost]
         public IActionResult ConfirmaCompra(Compra compra)
         {
+
             compra.Evento = _context.Evento.First(c => c.EventoId == compra.Evento.EventoId);
             compra.Data = DateTime.Now;
+
+            // compra.IdentityUser.Id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            // compra.IdentityUser = _context.Users.First(c => c.Id == compra.IdentityUser.Id);
+
             compra.Total = (compra.QtdIngressos * compra.Evento.PrecoIngresso);
 
             //Mudando a quantidade de ingressos do bando de dados do evento

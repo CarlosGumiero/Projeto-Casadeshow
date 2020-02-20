@@ -20556,11 +20556,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Historico\\Index.cshtml",
-      "TargetPath": "Views\\Historico\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -20588,11 +20583,6 @@
     {
       "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\CasaDeShow\\Delete.cshtml",
       "TargetPath": "Views\\CasaDeShow\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\CLGS\\Documents\\Casadeshow\\Views\\Historico\\Confirm.cshtml",
-      "TargetPath": "Views\\Historico\\Confirm.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -12,6 +12,7 @@ using Casadeshow.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
 
 namespace Casadeshow
 {
@@ -40,6 +41,8 @@ namespace Casadeshow
             services.AddRazorPages();
 
             services.AddAuthorization(options => options.AddPolicy("Adm", policy => policy.RequireClaim("Adm", "True")));
+            
+            // services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

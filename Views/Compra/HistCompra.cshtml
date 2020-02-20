@@ -1,11 +1,15 @@
 @model IEnumerable<Casadeshow.Models.Compra>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+    
 
-    @{
+@{
     ViewData["Title"] = "Eventos";
 }
 
 <div style="text-align:center;border:3px solid green">
-    <h1>Bem Vindo</h1>
+    <h1>Histórico de compras de @User.FindFirst("NomeUser").Value</h1>
 </div>
 
     <table class="table">
@@ -14,29 +18,39 @@
             <br>
             @foreach (var item in Model) 
             {
-                <div class="contaner row" style="border:3px solid blue">
+                        <div class="contaner row" style="border:3px solid blue">
 
-                    <div class="col-sm-3  centralizar">
-                        <img src="@Url.Action("PegarImagem", "Evento", new {id = item.Evento.EventoId})" width="200px" height="200px" />
+                        <div class="col-sm-3  centralizar">
+                            <img src="@Url.Action("PegarImagem", "Evento", new {id = item.Evento.EventoId})" width="150px" height="150px" />
+                        </div>
+
+                        <div class="col-sm-6 text-center ">
+                            <br><br>
+                                    <h5>
+                                        @Html.DisplayFor(modelItem => item.Evento.Nome) 
+                                    </h5>
+                                <br>
+                                    Compra número: @Html.DisplayFor(modelItem => item.CompraId)
+                                <br>
+                                    Data da compra: @Html.DisplayFor(modelItem => item.Data)
+                                <br>
+                                    Ingressos comprados: @Html.DisplayFor(modelItem => item.QtdIngressos)
+                                <br>
+                                    Preço pago: @Html.DisplayFor(modelItem => item.Total)
+                                <br>
+                                    Data do evento: @Html.DisplayFor(modelItem => item.Evento.Data)
+                                <br>
+                                    Local: @Html.DisplayFor(modelItem => item.Evento.CasaDeShow.Nome)
+                                <br>
+                                
+                        </div>
+
+                        <div class="col-sm-3 centralizar" >
+                            <img src="@Url.Action("PegarImagem", "Evento", new {id = item.Evento.EventoId})" width="150px" height="150px" />
+                        </div>
+
                     </div>
-
-                    <div class="col-sm-7 text-center ">
-                        <br><br>
-                                <h5>
-                                    @Html.DisplayFor(modelItem => item.CompraId)
-                                </h5>
-                            <br>
-                                R$ @Html.DisplayFor(modelItem => item.Evento.Nome) taokeis
-                            <br>
-                                Data: @Html.DisplayFor(modelItem => item.Data)
-                            <br>
-                    </div>
-
-                    <div class="col-sm-2 centralizar" >
-                    </div>
-
-                </div>
-                <br>
+                    <br>
             }
         </tbody>
         

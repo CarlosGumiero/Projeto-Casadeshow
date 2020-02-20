@@ -21,5 +21,6 @@ namespace Casadeshow.Models
         public int QtdIngresso {get; set;}
         public Genero Genero {get; set;}
         public byte[] Foto {get; set;}
+
     }
 }
