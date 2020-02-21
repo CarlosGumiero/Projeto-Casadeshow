@@ -31,7 +31,9 @@ html {
 }
 @media (min-width: 768px) {
   html {
+    
     font-size: 16px;
+    
   }
 }
 
@@ -56,11 +58,13 @@ button.accept-policy {
 html {
   position: relative;
   min-height: 100%;
+  
 }
 
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-image: linear-gradient(to bottom, rgb(255, 255, 255) 0%,rgb(217, 239, 252) 50%,rgb(170, 218, 233) 100%);
 }
 .footer {
   position: absolute;
@@ -71,6 +75,7 @@ body {
 }
 
 .centralizar {
+  
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -90,6 +95,7 @@ body {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+  
   
   background: rgb(255, 255, 255);
   padding:24px;
@@ -126,4 +132,27 @@ body {
 
 .card-product .price-old {
   color: #999;
+}
+
+.card-body {
+  background-image: linear-gradient(to right, rgb(255, 255, 255) 0%,rgb(217, 239, 252) 50%,rgb(170, 218, 233) 100%);
+}
+.list-group-item {
+  background-image: linear-gradient(to right, rgb(255, 255, 255) 0%,rgb(217, 239, 252) 50%,rgb(170, 218, 233) 100%);
+}
+.centralizar2 {
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  align-items:center;
+  justify-content:center;
+  
+  height: 20vh;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  background-image: linear-gradient(to right, rgb(255, 255, 255) 0%,rgb(217, 239, 252) 50%,rgb(170, 218, 233) 100%);
 }

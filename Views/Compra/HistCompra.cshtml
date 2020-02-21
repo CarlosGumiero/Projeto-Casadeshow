@@ -8,7 +8,7 @@
     ViewData["Title"] = "Eventos";
 }
 
-<div style="text-align:center;border:3px solid green">
+<div style="text-align:center;">
     <h1>Histórico de compras de @User.FindFirst("NomeUser").Value</h1>
 </div>
 
@@ -16,42 +16,29 @@
     <thead>
         <tbody>
             <br>
+            <div class="row">
             @foreach (var item in Model) 
             {
-                        <div class="contaner row" style="border:3px solid blue">
-
-                        <div class="col-sm-3  centralizar">
-                            <img src="@Url.Action("PegarImagem", "Evento", new {id = item.Evento.EventoId})" width="150px" height="150px" />
-                        </div>
-
-                        <div class="col-sm-6 text-center ">
-                            <br><br>
-                                    <h5>
-                                        @Html.DisplayFor(modelItem => item.Evento.Nome) 
-                                    </h5>
-                                <br>
-                                    Compra número: @Html.DisplayFor(modelItem => item.CompraId)
-                                <br>
-                                    Data da compra: @Html.DisplayFor(modelItem => item.Data)
-                                <br>
-                                    Ingressos comprados: @Html.DisplayFor(modelItem => item.QtdIngressos)
-                                <br>
-                                    Preço pago: @Html.DisplayFor(modelItem => item.Total)
-                                <br>
-                                    Data do evento: @Html.DisplayFor(modelItem => item.Evento.Data)
-                                <br>
-                                    Local: @Html.DisplayFor(modelItem => item.Evento.CasaDeShow.Nome)
-                                <br>
-                                
-                        </div>
-
-                        <div class="col-sm-3 centralizar" >
-                            <img src="@Url.Action("PegarImagem", "Evento", new {id = item.Evento.EventoId})" width="150px" height="150px" />
-                        </div>
-
+                <div class="col-4 mb-3">
+                <div class="card border-primary" style="width: 17rem;" >
+                    <img class="card-img-center"  src='@Url.Action("PegarImagem", "Evento", new {id = item.Evento.EventoId})'  alt="Card image cap" height="250px">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: center;">@Html.DisplayFor(modelItem => item.Evento.Nome) </h5>
+                        <p class="card-text" style="text-align: center;">Data: <a style="color: firebrick;">@Html.DisplayFor(modelItem => item.Data)</a></p> 
+                        <p class="card-text" style="text-align: center;">Local: <a style="color: firebrick;"> @Html.DisplayFor(modelItem => item.Evento.CasaDeShow.Nome)</a></p>
                     </div>
-                    <br>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Compra número: @Html.DisplayFor(modelItem => item.CompraId)</li>
+                        <li class="list-group-item">Preço pago: R$@Html.DisplayFor(modelItem => item.Total)</li>
+                        <li class="list-group-item">Data da compra: @Html.DisplayFor(modelItem => item.Evento.Data)</li>
+                    </ul>
+                    <div class="centralizar2">
+                        <img src="/images/ticket.png" width="200px">
+                    </div>
+                </div>
+                </div>
             }
+            </div>
         </tbody>
         
     </thead>

@@ -7,7 +7,7 @@
     ViewData["Title"] = "Eventos";
 }
 
-<div style="text-align:center;border:3px solid green">
+<div style="text-align:center;">
     @if (SignInManager.IsSignedIn(User))
     {
     <h1>Bem Vindo @User.FindFirst("NomeUser").Value!</h1>
@@ -18,16 +18,16 @@
     }
 </div>
 
-<table class="table">
+<table class="table" >
     <thead>
         <tbody>
             <br>
             @foreach (var item in Model) 
             {
-                <div class="contaner row" style="border:3px solid blue">
+                <div class="contaner row">
 
-                    <div class="col-sm-3  centralizar">
-                        <img src="@Url.Action("PegarImagem", "Evento", new {id = item.EventoId})" width="200px" height="200px" />
+                    <div class="col-sm-3  centralizar" style="background-color: transparent;" >
+                        <img src="@Url.Action("PegarImagem", "Evento", new {id = item.EventoId})" width="250px" height="250px" class="w-250"/>
                     </div>
 
                     <div class="col-sm-7 text-center ">
@@ -50,7 +50,7 @@
                     </div>
                                 @if (SignInManager.IsSignedIn(User))
                                 {
-                                <div class="col-sm-2 centralizar" >
+                                <div class="col-sm-2 centralizar" style="background-color: transparent;" >
                                     <a asp-controller="Compra" asp-action="Compra" asp-route-id="@item.EventoId" style="color: darkblue;">Comprar</a>
                                 </div>
                                 }

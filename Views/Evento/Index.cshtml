@@ -4,7 +4,7 @@
     ViewData["Title"] = "Eventos";
 }
 
-<div style="text-align:center;border:3px solid green">
+<div style="text-align:center;">
     <h1>Eventos</h1>
 </div>
 
@@ -63,7 +63,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Genero.Nome)
             </td>
-            <td>
+            <td class="w-150">
                 <img src="@Url.Action("PegarImagem", "Evento", new {id = item.EventoId})" width="150px" height="150px" />
             </td>
             <td>

@@ -36,7 +36,7 @@ namespace Casadeshow.Controllers
 
             ViewBag.Evento = _context.Evento.ToList();
             ViewBag.Casadeshow = _context.CasaDeShow.ToList();
-            return View(_context.Compra.ToList());
+            return View(_context.Compra.Include(c => c.Evento).Where(x => x.IdentityUser.Id == this.User.FindFirstValue(ClaimTypes.NameIdentifier)).ToList());
         }
 
         //Salvando as informações da View Compra
@@ -47,8 +47,8 @@ namespace Casadeshow.Controllers
             compra.Evento = _context.Evento.First(c => c.EventoId == compra.Evento.EventoId);
             compra.Data = DateTime.Now;
 
-            // compra.IdentityUser.Id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            // compra.IdentityUser = _context.Users.First(c => c.Id == compra.IdentityUser.Id);
+            compra.IdentityUser.Id = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            compra.IdentityUser = _context.Users.First(c => c.Id == compra.IdentityUser.Id);
 
             compra.Total = (compra.QtdIngressos * compra.Evento.PrecoIngresso);
 

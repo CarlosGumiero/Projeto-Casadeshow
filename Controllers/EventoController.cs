@@ -147,7 +147,6 @@ namespace Casadeshow.Controllers
                     evento.QtdIngresso = eventotemp.QtdIngresso;
                     evento.CasaDeShow = _context.CasaDeShow.First(cs => cs.CasaDeShowId == eventotemp.CasaDeShow);
                     evento.Genero = _context.Genero.First(cs => cs.GeneroId == eventotemp.Genero);
-                    evento.Foto = eventotemp.Foto;
 
                     if (Image != null)
                     {

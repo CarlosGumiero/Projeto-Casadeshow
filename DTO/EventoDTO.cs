@@ -30,6 +30,7 @@ namespace Casadeshow.DTO
 
         [Required]
         public int Genero {get; set;}
+        
         public byte[] Foto {get; set;}
     }
 }
