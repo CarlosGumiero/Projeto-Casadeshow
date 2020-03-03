@@ -29,7 +29,7 @@ namespace Casadeshow
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>(options => 
+            services.AddDefaultIdentity<IdentityUser>(options =>
                 {
                     options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireUppercase = false;
@@ -41,8 +41,12 @@ namespace Casadeshow
             services.AddRazorPages();
 
             services.AddAuthorization(options => options.AddPolicy("Adm", policy => policy.RequireClaim("Adm", "True")));
-            
-            // services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //Swagger
+            services.AddSwaggerGen(config =>
+            {
+                config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API DE CASA DE SHOW", Version = "v1" });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -71,6 +75,12 @@ namespace Casadeshow
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+            });
+
+            app.UseSwagger(); // gera um arquivo json - Swagger.Json
+            app.UseSwaggerUI(config => //Views HTML do Swagger
+            {
+                config.SwaggerEndpoint("/swagger/v1/swagger.json","v1 docs");
             });
         }
     }

@@ -178,3 +178,7 @@ C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\CasaDeSho
 C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\CasaDeShow\Delete.cshtml.g.cs
 C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\CasaDeShow\Edit.cshtml.g.cs
 C:\Users\CLGS\Documents\Casadeshow\obj\Debug\netcoreapp3.1\Razor\Views\CasaDeShow\Index.cshtml.g.cs
+C:\Users\CLGS\Documents\Casadeshow\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\CLGS\Documents\Casadeshow\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\CLGS\Documents\Casadeshow\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\CLGS\Documents\Casadeshow\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
